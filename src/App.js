@@ -6,7 +6,7 @@ function App() {
   const [quote, setQuote] = useState("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
   const [author, setAuthor] = useState("Mufti Menk");
   let newQuote = "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.";
-  let newAuthor = "Ibrahim Menk";
+  let newAuthor = "Mufti Menk";
 
   const changeQuoteAndAuthor1 = () =>{
     setQuote("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
