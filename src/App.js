@@ -5,9 +5,27 @@ import './App.scss';
 function App() {
   const [quote, setQuote] = useState("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
   const [author, setAuthor] = useState("Mufti Menk");
+  const [randomNumber, setRandomNumber] = useState(0);
   let newQuote = "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.";
   let newAuthor = "Mufti Menk";
-
+  
+  const generateRondomNumber = () => {
+    let randomInteger = Math.floor(Math.random()*3);
+    setRandomNumber(randomInteger);
+    switch(randomInteger){
+      case 0:
+        changeQuoteAndAuthor1();
+        break;
+      case 1:
+        changeQuoteAndAuthor2();
+        break;
+      case 2:
+        changeQuoteAndAuthor3();
+        break
+      default:
+        changeQuoteAndAuthor1()
+    }
+  }
   const changeQuoteAndAuthor1 = () =>{
     setQuote("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
     setAuthor("Ibrahim Menk");
@@ -24,6 +42,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Rondom Number: {randomNumber}</h1>
+        <button onClick={generateRondomNumber}>Generate a new Number</button>
         <p>
         “{quote}”
         </p>
