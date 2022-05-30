@@ -8,9 +8,18 @@ function App() {
   let newQuote = "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.";
   let newAuthor = "Ibrahim Menk";
 
-  const changeQuoteAndAuthor = () => {
+  const changeQuoteAndAuthor1 = () =>{
+    setQuote("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
+    setAuthor("Ibrahim Menk");
+  } 
+
+  const changeQuoteAndAuthor2 = () => {
     setQuote(newQuote);
     setAuthor(newAuthor);
+  }
+  const changeQuoteAndAuthor3 = () => {
+    setQuote("Every time things become difficult for you, wait for the relief.");
+    setAuthor("Shaykh Ibn Uthaymeen");
   }
   return (
     <div className="App">
@@ -19,7 +28,9 @@ function App() {
         “{quote}”
         </p>
         <p>- {author}</p>
-        <button onClick = {changeQuoteAndAuthor}>Change Quote</button>
+        <button onClick={changeQuoteAndAuthor1}>Change Quote 1</button>
+        <button onClick = {changeQuoteAndAuthor2}>Change Quote 2</button>
+        <button onClick = {changeQuoteAndAuthor3}>Change Quote 3</button>
       </header>
     </div>
   );
