@@ -1,68 +1,60 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
+import QuoteBox from "./Components/QuoteBox.component"
+import Spinner from 'react-bootstrap/Spinner'
 
-function App() {
-  const [quote, setQuote] = useState("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
-  const [author, setAuthor] = useState("Mufti Menk");
-  //const [randomNumber, setRandomNumber] = useState(0);
-  
-  const getRandomQuote = () => {
-    let randomInteger = Math.floor(Math.random()* quotesObjectArr.length);
-    //setRandomNumber(randomInteger);
-    setQuote(quotesObjectArr[randomInteger].quote);
-    setAuthor(quotesObjectArr[randomInteger].author);
+const quoteURL = "https://fcc-quote-api.herokuapp.com/"
+const colorsArr = ['4FC1FF', "E8B9AB", 'CB769E', '69995D', 'D2D7DF', '3AA7A3', 'ECA400', '006992', 'AFECE7', '81F499', '890620', 'B6465F', '8ACDEA']
+
+const randomArrVal = (arr) => {
+  console.log(arr)
+  let randomNum = Math.floor(arr.length *Math.random() );
+  console.log(arr[randomNum]);
+  return arr[randomNum];
+}
+
+const useFetch = url => {
+  const [data, setData] = useState(null);
+
+  async function fetchData() {
+    const response = await fetch(url);
+    const json = await response.json();
+    setData(json);
   }
 
-  const quotesObjectArr = [
-    {
-      quote: "Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.",
-      author:"Ibrahim Menk"
-     },
-    {
-      quote: "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.",
-       author: "Mufti Menk"
-    },
-    {
-      quote: "Every time things become difficult for you, wait for the relief.",
-       author: "Shaykh Ibn Uthaymeen"
-    },
-    {
-      quote: "What really counts are good endings, not flawed beginnings",
-      author: "Ibn Taymiyyah"
-    },
-    {
-      quote:"The worst colonization is not the colonization of your lands, it is the colonization of your minds",
-      author: "Abdu Raheem Green"
-    },
-    {
-      quote:"I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.",
-      author:"Mohammed Ali"
-    },
-    {
-      quote:"Every defeat, every heartbreak, every loss, contains its own seed, its own lesson on how to improve your performance next time",
-      author: "Malcolm X"
-    },
-    {
-      quote:"It isn't the mountains ahead to climb that wear you out; it's the pebble in your shoe.",
-      author:"Mohammed Ali"
-    },
-    {
-      quote: "Everyone has a plan until they get punched in the mouth",
-      author: "Mike Tyson"
+  useEffect(() => { 
+    fetchData() }
+     );
+  return data;
+};
+
+function App() {
+  const [accentColor, setAccentColor] = useState('#4FC1FF')
+  const quotes = useFetch(quoteURL)
+  const [currentQuote, setCurrentQuote] = useState({ author: '', quote: '' })
+  
+  useEffect(() => {
+    if (quotes) {
+      handleNewQuote()
     }
-  ];
+  })
+
+  const handleNewQuote = () => {
+    setAccentColor(`#${randomArrVal(colorsArr)}`)
+    let quoteArr = quotes.quotes
+    setCurrentQuote(randomArrVal(quoteArr))
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {/*<h1>Random Number: {randomNumber}</h1>*/}
-        <button onClick={getRandomQuote}>Generate a new Quote</button>
-        <p>
-        “{quote}”
-        </p>
-        <p>- {author}</p>
-      </header>
+    <div className="App" style={{ backgroundColor: `${accentColor}`, color: `${accentColor}` }}>
+      {
+        (currentQuote.quote === "") ?
+          <Spinner className="loading-spinner" animation="grow" variant="light" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+          :
+          <QuoteBox accentColor={accentColor} currentQuote={currentQuote} handleNewQuote={handleNewQuote} />
+      }
     </div>
   );
 }
