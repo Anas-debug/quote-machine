@@ -10,23 +10,8 @@ function App() {
   const generateRondomNumber = () => {
     let randomInteger = Math.floor(Math.random()*3);
     setRandomNumber(randomInteger);
-    switch(randomInteger){
-      case 0:
-        setQuote(quotesObjectArr[0].quote);
-        setAuthor(quotesObjectArr[0].author);
-        break;
-      case 1:
-        setQuote(quotesObjectArr[1].quote);
-        setAuthor(quotesObjectArr[1].author);
-        break;
-      case 2:
-        setQuote(quotesObjectArr[2].quote);
-        setAuthor(quotesObjectArr[2].author);
-        break
-      default:
-        setQuote(quotesObjectArr[0].quote);
-        setQuote(quotesObjectArr[0].author);
-    }
+    setQuote(quotesObjectArr[randomInteger].quote);
+    setAuthor(quotesObjectArr[randomInteger].author);
   }
 
   const quotesObjectArr = [
@@ -47,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Rondom Number: {randomNumber}</h1>
+        <h1>Random Number: {randomNumber}</h1>
         <button onClick={generateRondomNumber}>Generate a new Number</button>
         <p>
         “{quote}”
