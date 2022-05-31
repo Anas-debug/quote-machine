@@ -12,30 +12,37 @@ function App() {
     setRandomNumber(randomInteger);
     switch(randomInteger){
       case 0:
-        setQuote(quotes[0]);
-        setAuthor(authors[0]);
+        setQuote(quotesObjectArr[0].quote);
+        setAuthor(quotesObjectArr[0].author);
         break;
       case 1:
-        setQuote(quotes[1]);
-        setAuthor(authors[1]);
+        setQuote(quotesObjectArr[1].quote);
+        setAuthor(quotesObjectArr[1].author);
         break;
       case 2:
-        setQuote(quotes[2]);
-        setAuthor(authors[2]);
+        setQuote(quotesObjectArr[2].quote);
+        setAuthor(quotesObjectArr[2].author);
         break
       default:
-        setQuote(quotes[0]);
-        setQuote(authors[0]);
+        setQuote(quotesObjectArr[0].quote);
+        setQuote(quotesObjectArr[0].author);
     }
   }
 
-
-  const quotes = [
-    "Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.",
-    "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.",
-    "Every time things become difficult for you, wait for the relief."
-];
-  const authors = ["Ibrahim Menk", "Mufti Menk", "Shaykh Ibn Uthaymeen"];
+  const quotesObjectArr = [
+    {
+      quote: "Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.",
+      author:"Ibrahim Menk"
+     },
+    {
+      quote: "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.",
+       author: "Mufti Menk"
+    },
+    {
+      quote: "Every time things become difficult for you, wait for the relief.",
+       author: "Shaykh Ibn Uthaymeen"
+    }
+  ];
 
   return (
     <div className="App">
