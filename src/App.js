@@ -6,8 +6,6 @@ function App() {
   const [quote, setQuote] = useState("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
   const [author, setAuthor] = useState("Mufti Menk");
   const [randomNumber, setRandomNumber] = useState(0);
-  let newQuote = "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.";
-  let newAuthor = "Mufti Menk";
   
   const generateRondomNumber = () => {
     let randomInteger = Math.floor(Math.random()*3);
@@ -15,34 +13,22 @@ function App() {
     switch(randomInteger){
       case 0:
         setQuote(quotes[0]);
-        setAuthor(author[0]);
+        setAuthor(authors[0]);
         break;
       case 1:
         setQuote(quotes[1]);
-        setAuthor(author[1]);
+        setAuthor(authors[1]);
         break;
       case 2:
         setQuote(quotes[2]);
-        setAuthor(author[2]);
+        setAuthor(authors[2]);
         break
       default:
         setQuote(quotes[0]);
-        setQuote(author[0]);
+        setQuote(authors[0]);
     }
   }
-  const changeQuoteAndAuthor1 = () =>{
-    setQuote("Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.");
-    setAuthor("Ibrahim Menk");
-  } 
 
-  const changeQuoteAndAuthor2 = () => {
-    setQuote(newQuote);
-    setAuthor(newAuthor);
-  }
-  const changeQuoteAndAuthor3 = () => {
-    setQuote("Every time things become difficult for you, wait for the relief.");
-    setAuthor("Shaykh Ibn Uthaymeen");
-  }
 
   const quotes = [
     "Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.",
