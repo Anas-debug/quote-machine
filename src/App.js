@@ -14,16 +14,20 @@ function App() {
     setRandomNumber(randomInteger);
     switch(randomInteger){
       case 0:
-        changeQuoteAndAuthor1();
+        setQuote(quotes[0]);
+        setAuthor(author[0]);
         break;
       case 1:
-        changeQuoteAndAuthor2();
+        setQuote(quotes[1]);
+        setAuthor(author[1]);
         break;
       case 2:
-        changeQuoteAndAuthor3();
+        setQuote(quotes[2]);
+        setAuthor(author[2]);
         break
       default:
-        changeQuoteAndAuthor1()
+        setQuote(quotes[0]);
+        setQuote(author[0]);
     }
   }
   const changeQuoteAndAuthor1 = () =>{
@@ -39,6 +43,14 @@ function App() {
     setQuote("Every time things become difficult for you, wait for the relief.");
     setAuthor("Shaykh Ibn Uthaymeen");
   }
+
+  const quotes = [
+    "Don't let past mistakes make you lose hope of achieving good. Some of those with the worst past have made a great future for themselves.",
+    "Obstacles on our path are some of the tests of life. They make us stronger, better people and open up doors we had never imagined.",
+    "Every time things become difficult for you, wait for the relief."
+];
+  const authors = ["Ibrahim Menk", "Mufti Menk", "Shaykh Ibn Uthaymeen"];
+
   return (
     <div className="App">
       <header className="App-header">
@@ -48,9 +60,6 @@ function App() {
         “{quote}”
         </p>
         <p>- {author}</p>
-        <button onClick={changeQuoteAndAuthor1}>Change Quote 1</button>
-        <button onClick = {changeQuoteAndAuthor2}>Change Quote 2</button>
-        <button onClick = {changeQuoteAndAuthor3}>Change Quote 3</button>
       </header>
     </div>
   );
